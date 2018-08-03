@@ -1,6 +1,7 @@
 const express = require('express')
 const firebase = require("firebase")
 const bodyParser = require('body-parser')
+const cors = require('cors')
 
 const app = express()
 const port = process.env.PORT || 3001
@@ -25,6 +26,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
+
+// Then use it before your routes are set up:
+app.use(cors())
 
 app.get('/api/data/members', (req, res) => {
   // let members = req.body.members
